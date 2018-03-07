@@ -1,7 +1,7 @@
 About pyld
 ==========
 
-Home: https://pypi.python.org/pypi/PyLD/0.7.3
+Home: https://pypi.python.org/pypi/PyLD/1.0.1
 
 Package license: BSD-3-Clause
 
