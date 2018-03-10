@@ -1,6 +1,6 @@
 {% set name = "PyLD" %}
-{% set version = "0.8.0" %}
-{% set sha256 = "9c1aebb358bd3c3d008d3814b374d1cfcecb272cc7598722ae4901b6010f9e24" %}
+{% set version = "1.0.3" %}
+{% set sha256 = "f50a08fc9be794e869f20e594311e6569be30bd3e3adc87a3f130cd9ba79228a" %}
 
 package:
   name: {{ name|lower }}
