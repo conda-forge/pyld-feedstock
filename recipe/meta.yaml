@@ -1,6 +1,6 @@
 {% set name = "PyLD" %}
-{% set version = "0.7.3" %}
-{% set sha256 = "4baafb5487e4c2105479f15cac5afb1d0f6606d18eddc1da1504bb2267c7a602" %}
+{% set version = "1.0.3" %}
+{% set sha256 = "f50a08fc9be794e869f20e594311e6569be30bd3e3adc87a3f130cd9ba79228a" %}
 
 package:
   name: {{ name|lower }}
@@ -26,6 +26,7 @@ requirements:
 test:
   imports:
     - pyld
+    - pyld.documentloader
     
 about:
   home: https://pypi.python.org/pypi/PyLD/{{ version }}
