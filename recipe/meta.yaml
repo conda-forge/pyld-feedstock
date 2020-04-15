@@ -1,6 +1,6 @@
 {% set name = "PyLD" %}
-{% set version = "1.0.4" %}
-{% set sha256 = "0c37df9dae757ee56303c7918e0a2147ba0a754523783126b2ad5fdf24d7cefc" %}
+{% set version = "2.0.0" %}
+{% set sha256 = "0a72642bfa0a7d22ed538aab991cee113adc87af9e889197eafb837c2deb5dae" %}
 
 package:
   name: {{ name|lower }}
@@ -14,7 +14,7 @@ source:
 build:
   number: 0
   noarch: python
-  script: python setup.py install
+  script: {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
   build:
@@ -29,11 +29,11 @@ test:
   imports:
     - {{ name|lower }}
     - {{ name|lower }}.documentloader
-    
+
 about:
   home: https://pypi.python.org/pypi/{{ name }}/{{ version }}
   license: BSD-3-Clause
-  summary: 'Python implementation of the JSON-LD API'
+  summary: Python implementation of the JSON-LD API
   license_family: BSD
   license_file: LICENSE
   dev_url: https://github.com/digitalbazaar/{{ name|lower }}
