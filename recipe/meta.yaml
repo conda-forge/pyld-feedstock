@@ -24,14 +24,18 @@ requirements:
     - frozendict
     - lxml
     - python
+    - requests
 
 test:
   requires:
     - pip
+    - aiohttp
   imports:
     - c14n
     - pyld
     - pyld.documentloader
+    - pyld.documentloader.requests
+    - pyld.documentloader.aiohttp
   commands:
     - python -m pip check
 
