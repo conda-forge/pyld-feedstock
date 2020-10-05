@@ -1,43 +1,52 @@
 {% set name = "PyLD" %}
-{% set version = "1.0.4" %}
-{% set sha256 = "0c37df9dae757ee56303c7918e0a2147ba0a754523783126b2ad5fdf24d7cefc" %}
+{% set version = "2.0.3" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  sha256: 287445f888c3a332ccbd20a14844c66c2fcbaeab3c99acd506a0788e2ebb2f82
 
 build:
   number: 0
   noarch: python
-  script: python setup.py install
+  script: {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
-  build:
+  host:
+    - pip
     - python
-    - requests
 
   run:
+    - cachetools
+    - frozendict
+    - lxml
     - python
     - requests
 
 test:
+  requires:
+    - pip
+    - aiohttp
   imports:
-    - {{ name|lower }}
-    - {{ name|lower }}.documentloader
-    
+    - c14n
+    - pyld
+    - pyld.documentloader
+    - pyld.documentloader.requests
+    - pyld.documentloader.aiohttp
+  commands:
+    - python -m pip check
+
 about:
-  home: https://pypi.python.org/pypi/{{ name }}/{{ version }}
+  home: https://github.com/digitalbazaar/pyld
   license: BSD-3-Clause
-  summary: 'Python implementation of the JSON-LD API'
+  summary: Python implementation of the JSON-LD API
   license_family: BSD
   license_file: LICENSE
-  dev_url: https://github.com/digitalbazaar/{{ name|lower }}
 
 extra:
   recipe-maintainers:
     - notestaff
+    - bollwyvl
