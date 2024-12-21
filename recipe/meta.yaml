@@ -5,30 +5,32 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/P/PyLD/PyLD-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/P/PyLD/PyLD-{{ version }}.tar.gz
   sha256: 311e350f0dbc964311c79c28e86f84e195a81d06fef5a6f6ac2a4f6391ceeacc
 
 build:
-  number: 0
+  number: 1
   noarch: python
-  script: {{ PYTHON }} -m pip install . --no-deps -vv
+  script:
+    - {{ PYTHON }} -m pip install . --no-deps -vv --no-build-isolation --disable-pip-version-check
 
 requirements:
   host:
     - pip
-    - python >=3.4
-
+    - python {{ python_min }}
+    - setuptools
   run:
     - cachetools
     - frozendict
     - lxml
-    - python >=3.4
+    - python >={{ python_min }}
     - requests
 
 test:
   requires:
     - pip
     - aiohttp
+    - python {{ python_min }}
   imports:
     - c14n
     - pyld
@@ -36,7 +38,7 @@ test:
     - pyld.documentloader.requests
     - pyld.documentloader.aiohttp
   commands:
-    - python -m pip check
+    - pip check
 
 about:
   home: https://github.com/digitalbazaar/pyld
