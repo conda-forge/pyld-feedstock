@@ -1,0 +1,56 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/prefix-dev/recipe-format/main/schema.json
+schema_version: 1
+
+context:
+  version: "3.0.0"
+
+package:
+  name: pyld
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/P/PyLD/pyld-${{ version }}.tar.gz
+  sha256: b1913a06054f35a31e4d9916d184852909b2a3c5fea55c341bd00917cf8b22ef
+
+build:
+  number: 0
+  noarch: python
+  script:
+    - ${{ PYTHON }} -m pip install . --no-deps -vv --no-build-isolation --disable-pip-version-check
+
+requirements:
+  host:
+    - pip
+    - python ${{ python_min }}.*
+    - setuptools
+  run:
+    - cachetools
+    - frozendict
+    - lxml
+    - python >=${{ python_min }}
+    - requests
+
+tests:
+  - python:
+      imports:
+        - c14n
+        - pyld
+        - pyld.documentloader
+        - pyld.documentloader.requests
+        - pyld.documentloader.aiohttp
+      pip_check: true
+      python_version:
+        - ${{ python_min }}.*
+        - ${{ python_check_max }}.*
+
+about:
+  license: BSD-3-Clause
+  summary: Python implementation of the JSON-LD API
+  license_file: LICENSE
+  homepage: https://pypi.org/project/pyld
+  repository: https://github.com/digitalbazaar/pyld
+
+extra:
+  recipe-maintainers:
+    - notestaff
+    - bollwyvl
