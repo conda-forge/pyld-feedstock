@@ -2,7 +2,7 @@
 schema_version: 1
 
 context:
-  version: "3.0.0"
+  version: "3.1.0"
   python_check_max: "3.14"
 
 package:
@@ -11,7 +11,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/P/PyLD/pyld-${{ version }}.tar.gz
-  sha256: b1913a06054f35a31e4d9916d184852909b2a3c5fea55c341bd00917cf8b22ef
+  sha256: 7d02699af8e22f896cd7da094c0199063b5916dd018b1d2ec2a966d429270401
 
 build:
   number: 0
