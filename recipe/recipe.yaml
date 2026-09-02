@@ -48,7 +48,7 @@ tests:
         - ${{ python_check_max }}.*
   - requirements:
       run:
-        - python ${{ python_min }}
+        - python ${{ python_min }}.*
     script:
       - pyld --help
       - pyld --version
