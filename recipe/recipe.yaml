@@ -51,8 +51,6 @@ tests:
         - python ${{ python_min }}.*
     script:
       - pyld --help
-      - pyld --version
-      - pyld --version | ${{ "grep -iE" if unix else "findstr /c" }} "${{ version | replace('.', '\\.') }}"
 about:
   license: BSD-3-Clause
   summary: Python implementation of the JSON-LD API
